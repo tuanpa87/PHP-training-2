@@ -9,15 +9,15 @@
     header {
       padding: 2rem;
       background-color: #e3e3e3;
-      text-align: center
+      /* text-align: center */
     }
   </style>
 </head>
 <body>
   <header>
    <ul>
-      <?php foreach ($names as $name):  ?>
-        <li><?= $name; ?></li>
+      <?php foreach ($person as $feature => $val):  ?>
+        <li><strong><?= $feature; ?> </strong><?= $val; ?></li>
       <?php endforeach; ?>
    </ul>
   </header>
