@@ -8,6 +8,7 @@
 //   echo "$name, ";
 // }
 
+require 'functions.php';
 
 $animals = ['dog', 'cat'];
 $animals[] = 'elephant';
@@ -26,5 +27,6 @@ $task = [
   'assigned_to' => 'self',
   'completed' => false
 ];
+
 
 require 'index.view.php';
