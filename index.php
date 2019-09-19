@@ -28,5 +28,6 @@ $task = [
   'completed' => false
 ];
 
+dd($person);
 
 require 'index.view.php';
