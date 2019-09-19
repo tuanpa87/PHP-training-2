@@ -20,4 +20,11 @@ $person = [
 
 $person['name'] = 'Jeff';
 
+$task = [
+  'title'=> 'homework',
+  'due' => 'today',
+  'assigned_to' => 'self',
+  'completed' => false
+];
+
 require 'index.view.php';
