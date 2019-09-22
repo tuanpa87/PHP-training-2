@@ -2,6 +2,7 @@
 
 require 'up.php';
 require 'functions.php';
+require 'database/Connection.php';
 require 'Task.php';
 
 $animals = ['dog', 'cat'];
@@ -15,9 +16,9 @@ $person = [
 
 $person['name'] = 'Jeff';
 
-$pdo = connectToDb($user, $pass);
+$pdo = Connection::make($user, $pass);
 
-$tasks = fetchAllTasks();
+$tasks = fetchAllTasks($pdo);
 
 //dd($tasks[0]->foobar());
 
