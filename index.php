@@ -1,7 +1,6 @@
 <?php 
 
 require 'functions.php';
-require 'Task.php';
 
 $query = require 'bootstrap.php';
 
