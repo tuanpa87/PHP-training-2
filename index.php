@@ -8,6 +8,7 @@
 //   echo "$name, ";
 // }
 
+require 'up.php';
 require 'functions.php';
 
 $animals = ['dog', 'cat'];
@@ -57,18 +58,17 @@ class Task {
 
 }
 
-// $task = new Task('Go to the store');
-// $task->complete();
-// var_dump($task->isComplete());
+try {
+  $pdo = new PDO('mysql:host=127.0.0.1;dbname=mytodo', $user, $pass);
+} catch (PDOException $e) {
+  die($e->getMessage());
+}
 
 
-$tasks = [
-  new Task('Go to the store'),
-  new Task('Finish homework'),
-  new Task('Clear my room')
-];
+$statement = $pdo->prepare('select * from todos');
+$statement->execute();
+$tasks = $statement->fetchAll(PDO::FETCH_OBJ);
 
-$tasks[0]->complete();
-
+//dd($result[0]->description);
 
 require 'index.view.php';
