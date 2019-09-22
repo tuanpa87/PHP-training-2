@@ -15,16 +15,9 @@ $person = [
 
 $person['name'] = 'Jeff';
 
-try {
-  $pdo = new PDO('mysql:host=127.0.0.1;dbname=mytodo', $user, $pass);
-} catch (PDOException $e) {
-  die($e->getMessage());
-}
+$pdo = connectToDb($user, $pass);
 
-
-$statement = $pdo->prepare('select * from todos');
-$statement->execute();
-$tasks = $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
+$tasks = fetchAllTasks();
 
 //dd($tasks[0]->foobar());
 
