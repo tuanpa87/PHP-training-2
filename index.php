@@ -1,25 +1,10 @@
 <?php 
 
-require 'up.php';
 require 'functions.php';
-require 'database/Connection.php';
 require 'Task.php';
 
-$animals = ['dog', 'cat'];
-$animals[] = 'elephant';
+$query = require 'bootstrap.php';
 
-$person = [
-  'age' => 31,
-  'hair' => 'brown',
-  'career' => 'developer'
-];
-
-$person['name'] = 'Jeff';
-
-$pdo = Connection::make($user, $pass);
-
-$tasks = fetchAllTasks($pdo);
-
-//dd($tasks[0]->foobar());
+$tasks = $query->selectAll('todos');
 
 require 'index.view.php';
