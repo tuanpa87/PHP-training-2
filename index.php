@@ -1,15 +1,8 @@
 <?php 
 
-//$greeting  = "Hello world";
-
-//$names = ['Jeff', 'John', 'Linda'];
-
-// foreach ($names as $key => $name) {
-//   echo "$name, ";
-// }
-
 require 'up.php';
 require 'functions.php';
+require 'Task.php';
 
 $animals = ['dog', 'cat'];
 $animals[] = 'elephant';
@@ -22,42 +15,6 @@ $person = [
 
 $person['name'] = 'Jeff';
 
-// $task = [
-//   'title'=> 'homework',
-//   'due' => 'today',
-//   'assigned_to' => 'self',
-//   'completed' => false
-// ];
-
-//dd($person);
-
-
-class Task {
-  protected $description;
-  protected $completed = false; 
-  public function __construct ($description) 
-  {
-    //Automatically triggered on instantiation
-    $this->description = $description;
-  }
-
-  public function complete () 
-  {
-    $this->completed = true;
-  } 
-
-  public function isComplete () 
-  {
-    return $this->completed;
-  } 
-
-  public function description() 
-  {
-    return $this->description;
-  }
-
-}
-
 try {
   $pdo = new PDO('mysql:host=127.0.0.1;dbname=mytodo', $user, $pass);
 } catch (PDOException $e) {
@@ -67,8 +24,8 @@ try {
 
 $statement = $pdo->prepare('select * from todos');
 $statement->execute();
-$tasks = $statement->fetchAll(PDO::FETCH_OBJ);
+$tasks = $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
 
-//dd($result[0]->description);
+//dd($tasks[0]->foobar());
 
 require 'index.view.php';
